@@ -1,5 +1,7 @@
 package com.cricket.services;
 
+import java.util.Date;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -24,6 +26,21 @@ public class IplService {
 
 		System.out.println("User is : " + userName);
 		String output = "Helo : " + userName;
+		
+		Date dt = new Date();
+        int hours = dt.getHours();
+        int min = dt.getMinutes();
+
+        if(hours>=1 && hours<=12){
+            output = output + " Good Morning!!";
+        }else if(hours>=12 && hours<=16){
+        	output = output + " Good Afternoon!!";
+        }else if(hours>=16 && hours<=21){
+        	output = output + " Good Evening!!";
+        }else if(hours>=21 && hours<=24){
+        	output = output + " Good Night!!";
+        }
+        
 		return Response.status(200).entity(output).build();
 	}
 
